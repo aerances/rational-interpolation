@@ -288,6 +288,27 @@
                     {% endfor %}
 
                 </table>
+                <div class="final-step">
+
+    <h3>Final Computation</h3>
+
+    <p>
+
+        f({{ user_x }}) =
+
+        {% for step in steps %}
+
+            {{ step.weighted }}
+
+            {% if not loop.last %}
+                +
+            {% endif %}
+
+        {% endfor %}
+
+    </p>
+
+    <h2>= {{ result }}</h2>
 
             </div>
 
@@ -312,7 +333,7 @@
         <footer>
 
             <p>
-                Numerical Methods Project • Flask + Python + Chart.js
+                Numerical Methods Project 
             </p>
 
         </footer>
