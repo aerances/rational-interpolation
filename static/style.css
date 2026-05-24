@@ -258,5 +258,41 @@ footer{
     .card{
         padding: 25px;
     }
+.final-step{
+    margin-top: 30px;
+    padding: 25px;
+    border-radius: 15px;
+    background: rgba(255,255,255,0.05);
+    text-align: center;
+}
 
+.final-step h3{
+    color: #93c5fd;
+    margin-bottom: 15px;
+}
+
+.final-step p{
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.final-step h2{
+    color: #60a5fa;
+    font-size: 2rem;
+}
+
+.detailed-process{
+    margin-top: 40px;
+}
+
+.detailed-process h3{
+    color: #93c5fd;
+    margin-bottom: 20px;
+}
+
+.detailed-process p{
+    margin: 20px 0 10px;
+    font-size: 1rem;
+    opacity: 0.95;
+}
 }
