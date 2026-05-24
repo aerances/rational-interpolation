@@ -257,60 +257,131 @@
 
             </div>
 
-            <!-- STEP-BY-STEP -->
-            <div class="steps-box">
+          <!-- STEP-BY-STEP -->
+<div class="steps-box">
 
-                <h3>Step-by-Step Solution</h3>
+    <h3>Step-by-Step Solution</h3>
 
-                <table>
+    <table>
 
-                    <tr>
-                        <th>Basis Function</th>
-                        <th>Formula</th>
-                        <th>Value</th>
-                        <th>Weighted Value</th>
-                    </tr>
-
-                    {% for step in steps %}
-
-                    <tr>
-
-                        <td>{{ step.basis }}</td>
-
-                        <td>{{ step.formula }}</td>
-
-                        <td>{{ step.value }}</td>
-
-                        <td>{{ step.weighted }}</td>
-
-                    </tr>
-
-                    {% endfor %}
-
-                </table>
-                <div class="final-step">
-
-    <h3>Final Computation</h3>
-
-    <p>
-
-        f({{ user_x }}) =
+        <tr>
+            <th>Basis Function</th>
+            <th>Formula</th>
+            <th>Value</th>
+            <th>Weighted Value</th>
+        </tr>
 
         {% for step in steps %}
 
-            {{ step.weighted }}
+        <tr>
 
-            {% if not loop.last %}
-                +
-            {% endif %}
+            <td>{{ step.basis }}</td>
+
+            <td>{{ step.formula }}</td>
+
+            <td>{{ step.value }}</td>
+
+            <td>{{ step.weighted }}</td>
+
+        </tr>
 
         {% endfor %}
 
-    </p>
+    </table>
 
-    <h2>= {{ result }}</h2>
+    <!-- FINAL COMPUTATION -->
+    <div class="final-step">
 
-            </div>
+        <h3>Final Computation</h3>
+
+        <p>
+
+            f({{ user_x }}) =
+
+            {% for step in steps %}
+
+                {{ step.weighted }}
+
+                {% if not loop.last %}
+                    +
+                {% endif %}
+
+            {% endfor %}
+
+        </p>
+
+        <h2>= {{ result }}</h2>
+
+    </div>
+
+    <!-- DETAILED PROCESS -->
+    <div class="detailed-process">
+
+        <h3>Detailed Solution Process</h3>
+
+        <p>
+            Assume the rational interpolation function:
+        </p>
+
+        <div class="formula">
+
+            \[
+            R(x)=\frac{a+bx}{1+cx}
+            \]
+
+        </div>
+
+        {% for i in range(x_points|length) %}
+
+        <p>
+            Substituting:
+            \(x={{ x_points[i] }}\),
+            \(f(x)={{ y_points[i] }}\)
+        </p>
+
+        <div class="formula">
+
+            \[
+            {{ y_points[i] }}
+            =
+            \frac{
+                a + b({{ x_points[i] }})
+            }{
+                1 + c({{ x_points[i] }})
+            }
+            \]
+
+        </div>
+
+        {% endfor %}
+
+        <p>
+            Using interpolation basis functions:
+        </p>
+
+        <div class="formula">
+
+            \[
+            f(x)=\sum_{i=0}^{n}L_i(x)f(x_i)
+            \]
+
+        </div>
+
+        <p>
+            Final interpolation value:
+        </p>
+
+        <div class="formula final-formula">
+
+            \[
+            f({{ user_x }}) = {{ result }}
+            \]
+
+        </div>
+
+    </div>
+
+</div>
 
             {% endif %}
 
