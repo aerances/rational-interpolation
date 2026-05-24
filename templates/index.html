@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Rational Function Interpolation</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- MathJax -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+
+    <script id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+    <!-- Background Effects -->
+    <div class="circle one"></div>
+    <div class="circle two"></div>
+
+    <div class="container">
+
+        <!-- HERO -->
+        <section class="hero glass">
+
+            <h1>Rational Function Interpolation</h1>
+
+            <p>
+                Numerical Methods Project using Flask, Python, MathJax, and Chart.js
+            </p>
+
+        </section>
+
+        <!-- DISCUSSION -->
+        <section class="card glass">
+
+            <h2>Mathematical Discussion</h2>
+
+            <p>
+                Rational Function Interpolation approximates a function
+                using a ratio of polynomials.
+            </p>
+
+            <div class="formula">
+
+                \[
+                R(x)=\frac{P(x)}{Q(x)}
+                \]
+
+            </div>
+
+            <p>
+                This method improves interpolation accuracy for functions
+                with rapid changes and asymptotic behavior.
+            </p>
+
+            <div class="advantages">
+
+                <div class="adv-box">
+
+                    <h3>Advantages</h3>
+
+                    <ul>
+                        <li>Better numerical stability</li>
+                        <li>Reduces oscillation</li>
+                        <li>Handles asymptotes</li>
+                    </ul>
+
+                </div>
+
+                <div class="adv-box">
+
+                    <h3>Applications</h3>
+
+                    <ul>
+                        <li>Signal processing</li>
+                        <li>Engineering analysis</li>
+                        <li>Scientific computation</li>
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- WORKED EXAMPLE -->
+        <section class="card glass">
+
+            <h2>Worked Example</h2>
+
+            <p>
+                Given the data points:
+            </p>
+
+            <table>
+
+                <tr>
+                    <th>x</th>
+                    <th>f(x)</th>
+                </tr>
+
+                <tr>
+                    <td>1</td>
+                    <td>2</td>
+                </tr>
+
+                <tr>
+                    <td>2</td>
+                    <td>3</td>
+                </tr>
+
+                <tr>
+                    <td>3</td>
+                    <td>5</td>
+                </tr>
+
+            </table>
+
+            <p>
+                Assume:
+            </p>
+
+            <div class="formula">
+
+                \[
+                R(x)=\frac{a+bx}{1+cx}
+                \]
+
+            </div>
+
+            <p>
+                Substituting x = 1:
+            </p>
+
+            <div class="formula">
+
+                \[
+                2=\frac{a+b}{1+c}
+                \]
+
+            </div>
+
+            <p>
+                Substituting x = 2:
+            </p>
+
+            <div class="formula">
+
+                \[
+                3=\frac{a+2b}{1+2c}
+                \]
+
+            </div>
+
+            <p>
+                Solving gives:
+            </p>
+
+            <div class="formula">
+
+                \[
+                a=1,\quad b=1,\quad c=0
+                \]
+
+            </div>
+
+            <p>
+                Final Rational Function:
+            </p>
+
+            <div class="formula final-formula">
+
+                \[
+                R(x)=1+x
+                \]
+
+            </div>
+
+        </section>
+
+        <!-- CALCULATOR -->
+        <section class="card glass">
+
+            <h2>Interactive Calculator</h2>
+
+            <form method="POST">
+
+                <div class="input-group">
+
+                    <label>X Points</label>
+
+                    <input type="text"
+                        name="x_points"
+                        placeholder="1,2,3"
+                        required>
+
+                </div>
+
+                <div class="input-group">
+
+                    <label>Y Points</label>
+
+                    <input type="text"
+                        name="y_points"
+                        placeholder="2,3,5"
+                        required>
+
+                </div>
+
+                <div class="input-group">
+
+                    <label>Interpolation Point</label>
+
+                    <input type="number"
+                        step="any"
+                        name="x"
+                        placeholder="Enter x value"
+                        required>
+
+                </div>
+
+                <button type="submit">
+
+                    Calculate
+
+                </button>
+
+            </form>
+
+            {% if result %}
+
+            <!-- RESULT -->
+            <div class="result-box">
+
+                <h3>Interpolated Value</h3>
+
+                <p>{{ result }}</p>
+
+            </div>
+
+            <!-- STEP-BY-STEP -->
+            <div class="steps-box">
+
+                <h3>Step-by-Step Solution</h3>
+
+                <table>
+
+                    <tr>
+                        <th>Basis Function</th>
+                        <th>Formula</th>
+                        <th>Value</th>
+                        <th>Weighted Value</th>
+                    </tr>
+
+                    {% for step in steps %}
+
+                    <tr>
+
+                        <td>{{ step.basis }}</td>
+
+                        <td>{{ step.formula }}</td>
+
+                        <td>{{ step.value }}</td>
+
+                        <td>{{ step.weighted }}</td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </table>
+
+            </div>
+
+            {% endif %}
+
+        </section>
+
+        <!-- GRAPH -->
+        {% if result %}
+
+        <section class="card glass">
+
+            <h2>Interpolation Graph</h2>
+
+            <canvas id="myChart"></canvas>
+
+        </section>
+
+        {% endif %}
+
+        <!-- FOOTER -->
+        <footer>
+
+            <p>
+                Numerical Methods Project • Flask + Python + Chart.js
+            </p>
+
+        </footer>
+
+    </div>
+
+    <!-- CHART SCRIPT -->
+    {% if result %}
+
+    <script>
+
+    const ctx = document.getElementById('myChart');
+
+    new Chart(ctx, {
+
+        type: 'line',
+
+        data: {
+
+            labels: {{ chart_x|tojson }},
+
+            datasets: [
+
+                {
+                    label: 'Interpolated Curve',
+
+                    data: {{ chart_y|tojson }},
+
+                    borderColor: '#60a5fa',
+
+                    backgroundColor: 'rgba(96,165,250,0.2)',
+
+                    borderWidth: 3,
+
+                    tension: 0.4,
+
+                    fill: true
+                },
+
+                {
+                    label: 'Data Points',
+
+                    data: [
+
+                        {% for y in y_points %}
+
+                        {
+                            x: {{ x_points[loop.index0] }},
+                            y: {{ y }}
+                        },
+
+                        {% endfor %}
+
+                    ],
+
+                    type: 'scatter',
+
+                    backgroundColor: '#f43f5e',
+
+                    borderColor: '#f43f5e',
+
+                    pointRadius: 7
+                },
+
+                {
+                    label: 'Interpolated Value',
+
+                    data: [
+                        {
+                            x: {{ user_x }},
+                            y: {{ result }}
+                        }
+                    ],
+
+                    type: 'scatter',
+
+                    backgroundColor: '#22c55e',
+
+                    borderColor: '#22c55e',
+
+                    pointRadius: 9
+                }
+
+            ]
+
+        },
+
+        options: {
+
+            responsive: true,
+
+            plugins: {
+
+                legend: {
+
+                    labels: {
+                        color: 'white'
+                    }
+
+                }
+
+            },
+
+            scales: {
+
+                x: {
+
+                    ticks: {
+                        color: 'white'
+                    },
+
+                    grid: {
+                        color: 'rgba(255,255,255,0.1)'
+                    }
+
+                },
+
+                y: {
+
+                    ticks: {
+                        color: 'white'
+                    },
+
+                    grid: {
+                        color: 'rgba(255,255,255,0.1)'
+                    }
+
+                }
+
+            }
+
+        }
+
+    });
+
+    </script>
+
+    {% endif %}
+
+</body>
+</html>

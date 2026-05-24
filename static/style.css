@@ -1,0 +1,262 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+    color: white;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Background Blur */
+
+.circle{
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(120px);
+    z-index: -1;
+}
+
+.one{
+    width: 300px;
+    height: 300px;
+    background: #3b82f6;
+    top: -100px;
+    left: -100px;
+}
+
+.two{
+    width: 300px;
+    height: 300px;
+    background: #9333ea;
+    bottom: -100px;
+    right: -100px;
+}
+
+/* Container */
+
+.container{
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+    padding: 40px 0;
+}
+
+/* Glassmorphism */
+
+.glass{
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.1);
+    backdrop-filter: blur(12px);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+}
+
+/* Hero */
+
+.hero{
+    text-align: center;
+    padding: 60px 30px;
+    margin-bottom: 30px;
+}
+
+.hero h1{
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+
+.hero p{
+    opacity: 0.8;
+}
+
+/* Cards */
+
+.card{
+    padding: 35px;
+    margin-bottom: 30px;
+}
+
+.card h2{
+    color: #60a5fa;
+    margin-bottom: 20px;
+    font-size: 2rem;
+}
+
+/* Formula */
+
+.formula{
+    background: rgba(255,255,255,0.05);
+    padding: 20px;
+    border-radius: 12px;
+    margin: 20px 0;
+}
+
+.final-formula{
+    border: 1px solid #60a5fa;
+}
+
+/* Advantages */
+
+.advantages{
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 25px;
+}
+
+.adv-box{
+    flex: 1;
+    min-width: 250px;
+    background: rgba(255,255,255,0.05);
+    padding: 20px;
+    border-radius: 15px;
+}
+
+.adv-box h3{
+    color: #93c5fd;
+    margin-bottom: 15px;
+}
+
+.adv-box ul{
+    padding-left: 20px;
+}
+
+.adv-box li{
+    margin-bottom: 10px;
+}
+
+/* Table */
+
+table{
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table th,
+table td{
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 15px;
+    text-align: center;
+}
+
+table th{
+    background: rgba(255,255,255,0.08);
+}
+
+/* Form */
+
+form{
+    margin-top: 20px;
+}
+
+.input-group{
+    margin-bottom: 20px;
+}
+
+label{
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+input{
+    width: 100%;
+    padding: 14px;
+    border-radius: 12px;
+    border: none;
+    outline: none;
+    background: rgba(255,255,255,0.08);
+    color: white;
+}
+
+input::placeholder{
+    color: rgba(255,255,255,0.5);
+}
+
+/* Button */
+
+button{
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #3b82f6, #9333ea);
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover{
+    transform: translateY(-3px);
+    opacity: 0.9;
+}
+
+/* Result */
+
+.result-box{
+    margin-top: 30px;
+    padding: 25px;
+    border-radius: 15px;
+    background: rgba(255,255,255,0.06);
+    text-align: center;
+}
+
+.result-box h3{
+    color: #93c5fd;
+    margin-bottom: 10px;
+}
+
+.result-box p{
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+/* Steps */
+
+.steps-box{
+    margin-top: 30px;
+}
+
+.steps-box h3{
+    color: #93c5fd;
+    margin-bottom: 20px;
+}
+
+/* Graph */
+
+canvas{
+    margin-top: 20px;
+    background: rgba(255,255,255,0.03);
+    padding: 20px;
+    border-radius: 20px;
+}
+
+/* Footer */
+
+footer{
+    text-align: center;
+    padding: 30px 0;
+    opacity: 0.7;
+}
+
+/* Responsive */
+
+@media(max-width:768px){
+
+    .hero h1{
+        font-size: 2rem;
+    }
+
+    .card{
+        padding: 25px;
+    }
+
+}
